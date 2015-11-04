@@ -1,3 +1,6 @@
 .idea/
 venv/
 *.pyc
+django_customary.egg-info/
+dist/
+build/
