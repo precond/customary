@@ -1,5 +1,7 @@
+testproject/db.sqlite3
 .idea/
 venv/
+venv27/
 *.pyc
 django_customary.egg-info/
 dist/
