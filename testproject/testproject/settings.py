@@ -37,7 +37,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'customary.api',
     'customary.users',
+    'testproject.test',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -101,3 +103,29 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# Logging
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'customary': {
+            'handlers': ['console'],
+            'level': 'CRITICAL',
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'CRITICAL',
+            'propagate': True,
+        },
+    },
+}
