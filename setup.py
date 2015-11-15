@@ -18,7 +18,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='django-customary',
-    version='0.0.1.dev1',
+    version='0.0.1.dev2',
     description='Customary Toolbox for Django',
     long_description=long_description,
     url='https://github.com/precond/django-customary',
