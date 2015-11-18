@@ -1,6 +1,7 @@
 # coding=utf-8
 
 from __future__ import unicode_literals, print_function
+from builtins import str
 
 import json
 
@@ -18,7 +19,7 @@ class TestApiBase(TestCase):
         self.user = User.objects.create_user('user1', 'user@users.com', 'user1', first_name='User1', last_name='User')
         self.api_user = ApiUser.objects.create(user=self.user, comment='API test user1')
         self.token = ApiToken.objects.create(api_user=self.api_user, token='1234567890', comment='Status token 1')
-        self.api_user2 = ApiUser.objects.create(comment='API test user2')
+        self.api_user2 = ApiUser.objects.create(comment='API test üser2')
         self.token2 = ApiToken.objects.create(api_user=self.api_user2, token='0987654321', comment='Status token 2')
 
     def api_post(self, c, url, data, expected_code=200, expected_message=None):
@@ -54,11 +55,11 @@ class TestApiCore(TestApiBase):
 
     def test_apiuser_str(self):
         self.assertEqual(str(self.api_user), 'user1 (API test user1)')
-        self.assertEqual(str(self.api_user2), 'API test user2')
+        self.assertEqual(str(self.api_user2), 'API test üser2')
 
     def test_apitoken_str(self):
         self.assertEqual(str(self.token), 'user1 (Status token 1)')
-        self.assertEqual(str(self.token2), 'API test user2 (Status token 2)')
+        self.assertEqual(str(self.token2), 'API test üser2 (Status token 2)')
 
     def test_status(self):
         c = Client()
