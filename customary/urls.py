@@ -1,6 +1,8 @@
 from django.conf.urls import url
 
+from customary.api import views
+
 
 urlpatterns = [
-    url('status/$', 'customary.api.views.status', name='customary_status')
+    url('status/$', views.status, name='customary_status')
 ]
