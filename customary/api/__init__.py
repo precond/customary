@@ -7,10 +7,9 @@ import logging
 
 from functools import wraps
 
+from django.apps import apps
 from django.http import JsonResponse
 from django.utils.decorators import available_attrs
-
-from customary.api.models import ApiToken
 
 
 DEFAULT_API_METHODS = ['PUT', 'GET', 'POST', 'DELETE']
@@ -27,6 +26,7 @@ def api_request(methods=None, require_token=True):
     def decorator(view_func):
         @wraps(view_func, assigned=available_attrs(view_func))
         def _wrapped_view(request, *args, **kwargs):
+            ApiToken = apps.get_model('api', 'ApiToken')
             m = methods if methods is not None else DEFAULT_API_METHODS
             if request.method not in m:
                 response = ApiResponse(False, 'Method not supported', status=405)
