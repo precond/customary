@@ -18,7 +18,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='django-customary',
-    version='0.0.1.dev3',
+    version='0.0.1.dev4',
     description='Customary Toolbox for Django',
     long_description=long_description,
     url='https://github.com/precond/django-customary',
@@ -40,5 +40,5 @@ setup(
     ],
     keywords='SME CRM application development Django',
     packages=find_packages(exclude=['testproject']),
-    install_requires=['django'],
+    install_requires=['django>=1.8'],
 )
